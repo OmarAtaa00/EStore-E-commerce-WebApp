@@ -8,8 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data
 {
+    
     public class StoreContext : DbContext
     {
+        
         public StoreContext(DbContextOptions<StoreContext> options) :
          base(options)
         {
@@ -21,6 +23,7 @@ namespace Infrastructure.Data
 
 
 
+        //Applying the configuration to the properties 
         protected override void  OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
