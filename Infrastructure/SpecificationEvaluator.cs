@@ -14,7 +14,7 @@ namespace Infrastructure
 
             if (spec.Criteria != null)
             {
-                query = query.Where(spec.Criteria);
+                query = query.Where(spec.Criteria); // p => p.ProductTypeId == id; ex 
             }
             //Current represent entity, include represent Expression
             //To replace the Include(p => p.productType etc) take expressions and aggregate them to query into database
