@@ -7,12 +7,13 @@ using Core.Specifications;
 using Microsoft.AspNetCore.Mvc;
 using API.Dtos;
 using AutoMapper;
+using API.Errors;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+
+    public class ProductsController : BaseController
     {
         //Replacing the easy service and adding more complex one but it will help 
         //later to solve more problem to come TRUST
@@ -43,10 +44,13 @@ namespace API.Controllers
             return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductToReturnDto>>(products));
         }
         [HttpGet("{id}")]
+        [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)] //Document it for swagger 
         public async Task<ActionResult<ProductToReturnDto>> GetProducts(int id)
         {
             var spec = new ProductWithTypesAndBrandsSpecification(id);
             var product = await _productsRepo.GetEntityWithSpec(spec);
+
+            if (product == null) return NotFound(new ApiResponse(404));
 
             return _mapper.Map<Product, ProductToReturnDto>(product);
         }
@@ -60,6 +64,7 @@ namespace API.Controllers
         {
             return Ok(await _productTypeRepo.ListAllAsync());
         }
+
 
     }
 }
