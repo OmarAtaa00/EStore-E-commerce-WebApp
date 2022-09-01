@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Errors;
+using API.Extensions;
 using API.Helpers;
 using API.Middleware;
 using Core.Interfaces;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 
 namespace API
 {
@@ -39,6 +41,8 @@ namespace API
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddControllers();
+            services.AddScoped<ICartRepository, CartRepository>();
+
             //We must use this config after addling controllers otherwise it won't work "you have noting to configure"
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -59,12 +63,14 @@ namespace API
 
             });
 
-
             services.AddDbContext<StoreContext>(x =>
             x.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
-            services.AddSwaggerGen(c =>
+
+
+            services.AddSingleton<IConnectionMultiplexer>(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+                var configuration = ConfigurationOptions.Parse(_configuration.GetConnectionString("Redis"));
+                return ConnectionMultiplexer.Connect(configuration);
             });
 
 
@@ -84,12 +90,9 @@ namespace API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseMiddleware<ExceptionMiddleware>();
-            if (env.IsDevelopment())
-            {
 
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
-            }
+
+
             app.UseStatusCodePagesWithReExecute("/errors/{0}"); //placeholder for statusCode
 
             app.UseHttpsRedirection();
