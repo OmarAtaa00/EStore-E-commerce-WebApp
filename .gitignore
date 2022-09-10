@@ -2,5 +2,6 @@ obj
 bin
 appsettings.json
 *.db
-TODOs.txt
+.vs
+.vscode
 NotesForSite

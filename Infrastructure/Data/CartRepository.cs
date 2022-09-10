@@ -7,6 +7,7 @@ using StackExchange.Redis;
 
 namespace Infrastructure.Data
 {
+    //This is not generic repository cuz Redis not manged by EFCore 
     public class CartRepository : ICartRepository
     {
         private readonly IDatabase _database;

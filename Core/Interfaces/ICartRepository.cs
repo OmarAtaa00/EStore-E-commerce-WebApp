@@ -8,7 +8,6 @@ namespace Core.Interfaces
     {
         Task<Cart> GetCartAsync(string cartId);
         Task<Cart> UpdateOrCreateCart(Cart cart);
-
         Task<bool> DeleteCartAsync(string cartId);
     }
 }

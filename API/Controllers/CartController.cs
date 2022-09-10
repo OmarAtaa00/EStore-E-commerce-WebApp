@@ -19,16 +19,17 @@ namespace API.Controllers
         public async Task<ActionResult<Cart>> GetCartById(string id)
         {
             var cart = await _cartRepo.GetCartAsync(id);
-            return Ok(cart ?? new Cart(id));
+            return Ok(cart ?? new Cart(id)); // id Created by the Client-side
         }
+        
         [HttpPost]
         public async Task<ActionResult<Cart>> UpdateOrCreateCart(Cart cart)
         {
             var updatedCart = await _cartRepo.UpdateOrCreateCart(cart);
             return Ok(updatedCart);
         }
-        [HttpDelete]
 
+        [HttpDelete]
         public async Task DeleteCart(string id)
         {
             await _cartRepo.DeleteCartAsync(id);

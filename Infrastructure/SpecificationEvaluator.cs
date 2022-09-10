@@ -12,6 +12,7 @@ namespace Infrastructure
         {
             var query = inputQuery;
 
+
             if (spec.Criteria != null)
             {
                 query = query.Where(spec.Criteria); //ex  p => p.ProductTypeId == id;  
