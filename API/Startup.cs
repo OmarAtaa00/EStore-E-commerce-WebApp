@@ -45,6 +45,8 @@ namespace API
             services.AddControllers();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IOrderService, OrderService>();
             //We must use this config after adding controllers otherwise it won't work "you have noting to configure"
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -64,10 +66,7 @@ namespace API
 
 
             });
-            // services.AddSwaggerGen(c =>
-            // {
-            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            // });
+            services.AddSwaggerDocumentation();
 
             services.AddDbContext<StoreContext>(x =>
             x.UseSqlite(_configuration.GetConnectionString("DefaultConnection")));
@@ -101,13 +100,8 @@ namespace API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            // if (env.IsDevelopment())
-            // {
-            //     app.UseDeveloperExceptionPage();
-            //     app.UseSwagger();
-            //     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
-            // }
 
+            app.UseSwaggerDocumentation();
             app.UseMiddleware<ExceptionMiddleware>();
 
 

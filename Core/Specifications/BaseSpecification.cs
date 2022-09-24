@@ -31,7 +31,7 @@ namespace Core.Specifications
 
         public bool IsPaginationEnabled { get; private set; }
 
-   
+
 
         //Method to replace the include used in ProductRepository
         protected void AddInclude(Expression<Func<T, object>> includeExpression)

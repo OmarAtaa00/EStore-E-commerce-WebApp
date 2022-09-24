@@ -48,5 +48,25 @@ namespace Infrastructure.Data
         {
             return await ApplySpecification(spec).CountAsync();
         }
+
+        // these method track all changes 
+        public void Add(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
+        public void Update(T entity)
+        {
+            _context.Set<T>().Attach(entity);
+
+            // this marks the entity as modified while being tracked  add added to things to be saved 
+            // when save to database async is called 
+            _context.Entry(entity).State = EntityState.Modified;
+        }
+
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
     }
 }

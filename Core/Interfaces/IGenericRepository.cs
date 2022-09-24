@@ -18,6 +18,11 @@ namespace Core.Interfaces
 
         Task<int> CountAsync(ISpecification<T> spec);
 
+        // no need to be async 
+        void Add(T entity);
+
+        void Update(T entity);
+        void Delete(T entity);
 
     }
 }
