@@ -1,12 +1,3 @@
-obj
-bin
-appsettings.json
-*.db
-.vs
-.vscode
-NotesForSite
-
-
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
