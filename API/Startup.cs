@@ -84,13 +84,13 @@ namespace API
             });
 
             services.AddIdentityServices(_configuration);
-            services.AddCors(options =>
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy =>
                 {
-                    options.AddPolicy("CorsPolicy", policy =>
-                    {
-                        policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https:://localhost:4200");
-                    });
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
                 });
+            });
 
 
 

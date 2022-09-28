@@ -58,7 +58,7 @@ namespace API.Controllers
 
         public async Task<ActionResult<IReadOnlyList<OrderDto>>> GetOrders()
         {
-            var email = User.GetEmailFromPrincipal();
+            var email = User.GetEmailFromPrincipal(); // get the account from the user manger 
 
 
             var orders = await _orderService.GetOrdersAsync(email);

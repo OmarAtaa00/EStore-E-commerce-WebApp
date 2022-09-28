@@ -1,2 +1,13 @@
-<!-- <ll-loader [center]="true"></ll-loader> -->
-<router-outlet></router-outlet>
+<app-nav-bar></app-nav-bar>
+
+
+<div class="container">
+  <div class="row">
+
+  <li class="list-unstyled" *ngFor="let product of products">
+    {{product.name}}
+  </li>
+  </div>
+</div>
+
+
