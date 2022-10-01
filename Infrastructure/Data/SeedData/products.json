@@ -139,7 +139,7 @@
     "Name": "Asus ROG Phone",
     "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
     "Price": 25000.99,
-    "PictureUrl": "images/products/Asus ROG Phone",
+    "PictureUrl": "images/products/AsusROGPhone.png",
     "ProductTypeId": 1,
     "ProductBrandId": 3
   }

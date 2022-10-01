@@ -36,10 +36,10 @@ namespace Core.Specifications
             {
                 switch (productParams.Sort)
                 {
-                    case "PriceLow":
+                    case "priceLow":
                         AddOrderBy(p => p.Price);
                         break;
-                    case "PriceHigh":
+                    case "priceHigh":
                         AddOrderByDescending(p => p.Price);
                         break;
 
