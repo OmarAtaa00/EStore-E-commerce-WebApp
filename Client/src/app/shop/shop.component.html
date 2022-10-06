@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <section class="col-3">
-      <h5 class="text-warning ml-3">Sort</h5>
+    <section class="col-2">
+      <h5 class="text-danger ml-3">Sort</h5>
       <select
         class="custom-select my-3"
         (change)="onSortSelected($event.target.value)"
@@ -11,7 +11,7 @@
         </option>
       </select>
 
-      <h5 class="text-warning ml-3">Brands</h5>
+      <h5 class="text-danger ml-3">Brands</h5>
       <ul class="list-group mb-3">
         <li
           class="list-group-item"
@@ -23,7 +23,7 @@
           {{ brand.name }}
         </li>
       </ul>
-      <h5 class="text-warning ml-3">Types</h5>
+      <h5 class="text-danger ml-3">Types</h5>
       <ul class="list-group my-3">
         <li
           class="list-group-item"
@@ -38,31 +38,41 @@
     </section>
     <section class="col-9">
       <div class="d-flex justify-content-between align-items-center pb-2">
-        <app-paging-header
+        <!-- <app-paging-header
           [totalCount]="totalCount"
           [pageSize]="shopParams.pageSize"
           [pageNumber]="shopParams.pageNumber"
-        ></app-paging-header>
+        ></app-paging-header> -->
 
-        <div class="form-inline mt-1">
+        <div class="input-group">
           <input
             (keyup.enter)="onSearch()"
             type="text"
-            class="form-control mr-1"
+            class="form-control ml-2"
             #search
             placeholder="Search"
           />
-          <button (click)="onSearch()" class="btn btn-outline-primary my-2">
-            Search
-          </button>
-          <button (click)="onReset()" class="btn btn-outline-success ml-2 my-2">
-            Reset
-          </button>
+          <div class="input-group-append">
+            <button
+              (click)="onSearch()"
+              class="btn btn-outline-primary"
+              type="button"
+            >
+              Search
+            </button>
+            <button
+              (click)="onReset()"
+              class="btn btn-outline-secondary"
+              type="button"
+            >
+              Reset
+            </button>
+          </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-4 mb-4" *ngFor="let product of products">
+        <div class="col-4 mb-1" *ngFor="let product of products">
           <app-product-item [product]="product"></app-product-item>
         </div>
       </div>

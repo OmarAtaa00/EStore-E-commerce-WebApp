@@ -10,4 +10,25 @@
     top: -12px;
     right: -12px;
 }
-a:link { text-decoration: none; }
+
+a {
+    text-decoration: none;
+    color: #343a40;
+
+    &.active {
+        color: #dc3545
+    }
+}
+
+.logo {
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.text{
+  text-decoration: node;
+  color: #dc3545;
+}
