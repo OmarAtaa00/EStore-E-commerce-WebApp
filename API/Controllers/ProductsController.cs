@@ -74,7 +74,8 @@ namespace API.Controllers
         {
             return Ok(await _productTypeRepo.ListAllAsync());
         }
-                              
+
+
 
     }
 }

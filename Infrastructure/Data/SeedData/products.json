@@ -51,7 +51,7 @@
     "Name": "Apple Macbook Pro",
     "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
     "Price": 60000,
-    "PictureUrl": "images/products/Apple Macbook Pro.png",
+    "PictureUrl": "images/products/AppleMacbookPro.png",
     "ProductTypeId": 2,
     "ProductBrandId": 2
   },

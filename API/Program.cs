@@ -34,19 +34,13 @@ namespace API
                     await StoreContextSeed.SeedAsync(context, loggerFactory);
 
 
+
                     var userManager = services.GetRequiredService<UserManager<User>>();
                     var identityContext = services.GetRequiredService<AppIdentityDbContext>();
 
                     //Attempt to create database
                     await identityContext.Database.MigrateAsync();
                     await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
-
-
-
-
-
-
-
                 }
                 catch (Exception ex)
                 {
@@ -55,7 +49,7 @@ namespace API
                     logger.LogError(ex, "An error occurred while migrations ");
                 }
             }
-            host.Run();
+            await host.RunAsync();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -11,15 +11,19 @@
     <p>{{ product.price | currency }}</p>
     <div class="d-flex justify-content-start align-items-center">
       <i
-        class="fa fa-minus-circle text-warning p-2"
+        (click)="decrement()"
+        class="fa fa-minus-circle text-danger p-2"
         style="cursor: pointer; font-size: 2em"
       ></i>
-      <span class="font-weight-bold" style="font-size: 1.5em">2</span>
+      <span class="font-weight-bold" style="font-size: 1.5em">{{ this.quantity }}</span>
       <i
-        class="fa fa-plus-circle text-warning p-2"
+        (click)="increment()"
+        class="fa fa-plus-circle text-danger p-2"
         style="cursor: pointer; font-size: 2em"
       ></i>
-      <button class="btn btn-outline-secondary btn-lg ml-4">Add to Cart</button>
+      <button
+      (click)="addItemToCart()"
+      class="btn btn-outline-secondary btn-lg ml-4">Add to Cart</button>
     </div>
   </div>
   <div class="row mt-5">
