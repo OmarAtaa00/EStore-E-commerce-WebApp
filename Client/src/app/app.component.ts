@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from './cart/cart.service';
+import { AccountService } from './account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,30 @@ import { CartService } from './cart/cart.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit(): void {
+    this.loadCart();
+    this.loadCurrentUser();
+  }
+
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+
+    this.accountService.loadCurrentUser(token).subscribe(
+      () => {
+        console.log('user logged ');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  loadCart() {
     // check for local storage
     //getItem return null if not exist
 
@@ -22,7 +44,7 @@ export class AppComponent implements OnInit {
         },
         (error) => {
           console.log(error);
-        } 
+        }
       );
     }
   }

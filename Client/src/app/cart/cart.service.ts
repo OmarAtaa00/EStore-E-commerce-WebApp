@@ -34,8 +34,8 @@ export class CartService {
   // when app restarts we call getCart and it will set the cart to whatever receive from the api
 
   getCart(id: string) {
-    return this.http.get(this.baseUrl + 'cart?id=' + id).pipe(
-      map((cart: any) => {
+    return this.http.get<ICart>(this.baseUrl + 'cart?id=' + id).pipe(
+      map((cart: ICart) => {
         this.cartSource.next(cart);
         this.calculateTotal();
       })
@@ -43,8 +43,8 @@ export class CartService {
   }
 
   setCart(cart: ICart) {
-    return this.http.post(this.baseUrl + 'cart', cart).subscribe(
-      (response: any) => {
+    return this.http.post<ICart>(this.baseUrl + 'cart', cart).subscribe(
+      (response: ICart) => {
         this.cartSource.next(response);
         this.calculateTotal();
       },

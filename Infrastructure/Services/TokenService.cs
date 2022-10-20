@@ -11,7 +11,6 @@ using Microsoft.IdentityModel.Tokens;
 namespace Infrastructure.Services
 {
     public class TokenService : ITokenService
-
     {
         private readonly IConfiguration _config;
         private readonly SymmetricSecurityKey _key;
@@ -23,30 +22,27 @@ namespace Infrastructure.Services
 
         public string CreateToken(User user)
         {
-            //Setup what any user can claim 
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.GivenName, user.DisplayName),
-
+                new Claim(ClaimTypes.GivenName, user.DisplayName)
             };
-            //Create some credentials 
+
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
-            //Describe our token what we want inside it 
+
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(5),
+                Expires = DateTime.Now.AddDays(7),
                 SigningCredentials = creds,
                 Issuer = _config["Token:Issuer"]
             };
 
-            //something to handle tokens
             var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
 
-            //go receive the token 
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+
+            return tokenHandler.WriteToken(token);
         }
     }
 }

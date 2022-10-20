@@ -5,15 +5,18 @@ import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [NavBarComponent, NotFoundComponent, ServerErrorComponent],
-  imports: [CommonModule, RouterModule,
+  imports: [
+    CommonModule,
+    RouterModule,
+    SharedModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-      
-    })
+    }),
   ],
   exports: [NavBarComponent],
 })

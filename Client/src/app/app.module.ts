@@ -10,7 +10,7 @@ import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './core/interceptors/error.interceptor';
 import { ContactComponent } from './contact/contact.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
+// import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [AppComponent, ContactComponent],
@@ -29,11 +29,11 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
       useClass: ErrorInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: LoadingInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })

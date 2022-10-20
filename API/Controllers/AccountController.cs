@@ -87,6 +87,8 @@ namespace API.Controllers
                 DisplayName = registerDto.Name,
                 UserName = registerDto.Email, //the email is unique we can use it as username
 
+
+
             };
 
             var result = await _userManager.CreateAsync(user, registerDto.Password);
@@ -98,6 +100,7 @@ namespace API.Controllers
                 Name = user.DisplayName,
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user),
+
             };
         }
 

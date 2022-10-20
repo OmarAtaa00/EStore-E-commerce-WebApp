@@ -8,7 +8,7 @@
     "strict": true,
     "noImplicitOverride": true,
     "noImplicitAny": false,
-    "noPropertyAccessFromIndexSignature": true,
+    "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
@@ -19,6 +19,7 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "strictNullChecks": false,
+
     "target": "es2020",
     "module": "es2020",
     "lib": [
