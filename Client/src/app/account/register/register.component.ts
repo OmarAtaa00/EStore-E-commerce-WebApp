@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
           Validators.required,
           Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
         ],
-        [this.validateEmailNotTaken()], // will call this after the 2 validator above passed
+        [this.validateEmailNotTaken()],
       ],
       password: [null, Validators.required],
     });
@@ -60,11 +60,9 @@ export class RegisterComponent implements OnInit {
     return (control) => {
       return timer(500).pipe(
         switchMap(() => {
-          // return inner observable to outer observable
           if (!control.value) {
-            return of(null); // return an observable of something
+            return of(null);
           }
-          // pass the email , from the response return result exist or not
           return this.accountService.checkEmailExists(control.value).pipe(
             map((res) => {
               return res ? { emailExists: true } : null;

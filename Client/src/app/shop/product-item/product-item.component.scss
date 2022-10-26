@@ -7,7 +7,6 @@
     height: 40px;
 }
 
-
 .image :hover {
     opacity: 1;
     & button {
@@ -28,12 +27,12 @@
 
     & button {
         z-index: 1000;
-        transition: all 0.7s;
+        transition: all 0.5s;
     }
     & button:first-of-type {
-        transform: translateX(-30px);
+        transform: translateX(-20px);
     }
     & button:last-of-type {
-        transform: translateX(30px);
+        transform: translateX(20px);
     }
 }

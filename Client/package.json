@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.1.0",
+    "@angular/cdk": "^14.2.5",
     "@angular/common": "^14.1.0",
     "@angular/compiler": "^14.1.0",
     "@angular/core": "^14.1.0",
@@ -20,8 +21,10 @@
     "@angular/router": "^14.1.0",
     "@fortawesome/angular-fontawesome": "^0.11.1",
     "bootstrap": "^5.2.1",
+    "bootswatch": "^5.2.2",
     "font-awesome": "^4.7.0",
     "ngx-bootstrap": "^9.0.0",
+    "ngx-breadcrumb": "^0.5.16",
     "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^15.2.0",
     "rxjs": "~7.5.0",

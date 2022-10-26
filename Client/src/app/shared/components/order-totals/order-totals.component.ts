@@ -1,19 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../../cart/cart.service';
 import { Observable } from 'rxjs';
-import { ICartTotal } from '../../models/cart';
+import { BasketService } from 'src/app/basket/basket.service';
+import { IBasketTotals } from '../../models/basket';
 
 @Component({
   selector: 'app-order-totals',
   templateUrl: './order-totals.component.html',
-  styleUrls: ['./order-totals.component.scss'],
+  styleUrls: ['./order-totals.component.scss']
 })
 export class OrderTotalsComponent implements OnInit {
-  cartTotal$: Observable<ICartTotal>;
+  basketTotal$: Observable<IBasketTotals>;
 
-  constructor(private cartService: CartService) {}
+  constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
-    this.cartTotal$ = this.cartService.cartTotal$;
+    this.basketTotal$ = this.basketService.basketTotal$;
   }
+
 }

@@ -8,7 +8,7 @@
     color: white;
     text-align: center;
     top: -12px;
-    right: -12px;
+    right: 32px;
 }
 
 a {
@@ -16,7 +16,7 @@ a {
     color: #343a40;
 
     &.active {
-        color: #dc3545
+        color: orange
     }
 }
 
@@ -26,9 +26,4 @@ a {
     &:focus {
         outline: none;
     }
-}
-
-.text{
-  text-decoration: node;
-  color: #dc3545;
 }

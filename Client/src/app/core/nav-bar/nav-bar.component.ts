@@ -1,31 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICart } from 'src/app/shared/models/cart';
+import { AccountService } from 'src/app/account/account.service';
+import { BasketService } from 'src/app/basket/basket.service';
+import { IBasket } from 'src/app/shared/models/basket';
 import { IUser } from 'src/app/shared/models/user';
-import { CartService } from '../../cart/cart.service';
-import { AccountService } from '../../account/account.service';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss'],
+  styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  cart$: Observable<ICart>;
+  basket$: Observable<IBasket>;
   currentUser$: Observable<IUser>;
 
-  constructor(
-    private cartService: CartService,
-    private accountService: AccountService
-  ) {}
+  constructor(private basketService: BasketService, private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.cart$ = this.cartService.cart$;
+    this.basket$ = this.basketService.basket$;
     this.currentUser$ = this.accountService.currentUser$;
   }
 
   logout() {
     this.accountService.logout();
   }
-  
+
 }

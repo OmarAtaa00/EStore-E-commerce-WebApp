@@ -5,7 +5,10 @@
         <h1 class="h3 mb-3 font-weight-normal">Register</h1>
       </div>
 
-      <app-text-input formControlName="name" [label]="'Name'"></app-text-input>
+      <app-text-input
+        formControlName="name"
+        [label]="' Name'"
+      ></app-text-input>
       <app-text-input
         formControlName="email"
         [label]="'Email address'"
@@ -22,11 +25,9 @@
         </li>
       </ul>
 
-      <div class="d-grid gap-2">
-        <button class="btn btn-lg btn-danger btn-block" type="submit">
-          Register
-        </button>
-      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        Register
+      </button>
     </form>
   </div>
 </div>

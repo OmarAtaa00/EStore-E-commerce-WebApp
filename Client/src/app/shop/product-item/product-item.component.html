@@ -3,19 +3,18 @@
     <img
       src="{{ product.pictureUrl }}"
       alt="{{ product.name }}"
-      class="img-fluid bg-white"
+      class="img-fluid bg-light"
     />
     <div class="d-flex align-items-center justify-content-center hover-overlay">
       <button
+        (click)="addItemToBasket()"
         type="button"
-        (click)="addItemToCart()"
-        class="btn btn-primary fa fa-shopping-cart mr-3"
+        class="btn btn-primary fa fa-shopping-cart mr-2"
       ></button>
-      &nbsp; &nbsp;
       <button
         routerLink="/shop/{{ product.id }}"
         type="button"
-        class="btn btn-primary fa fa-eye mr-3"
+        class="btn btn-primary fa fa-eye"
       ></button>
     </div>
   </div>

@@ -8,6 +8,10 @@ import { ShopRoutingModule } from './shop-routing.module';
 
 @NgModule({
   declarations: [ShopComponent, ProductItemComponent, ProductDetailsComponent],
-  imports: [CommonModule, SharedModule, ShopRoutingModule],
+  imports: [
+    CommonModule,
+    SharedModule,
+    ShopRoutingModule
+  ]
 })
-export class ShopModule {}
+export class ShopModule { }

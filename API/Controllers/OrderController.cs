@@ -28,6 +28,11 @@ namespace API.Controllers
             _orderService = orderService;
 
         }
+        [HttpGet("deliveryMethod")]
+        public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethod()
+        {
+            return Ok(await _orderService.GetDeliveryMethodAsync());
+        }
 
         [HttpPost]
         public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
@@ -78,11 +83,7 @@ namespace API.Controllers
 
         }
 
-        [HttpGet("deliveryMethod")]
-        public async Task<ActionResult<IReadOnlyList<DeliveryMethod>>> GetDeliveryMethod()
-        {
-            return Ok(await _orderService.GetDeliveryMethodAsync());
-        }
+
 
     }
 }
