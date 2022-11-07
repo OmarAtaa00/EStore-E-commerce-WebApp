@@ -5,7 +5,7 @@ namespace Core.Specifications
     //Class to hold all the spec parameters cuz it is so big it can't fit in anymore :D in GetProducts function of course
     public class ProductSpecParams
     {
-        private const int MaxPageSize = 30;
+        private const int MaxPageSize = 7;
         public int PageIndex { get; set; } = 1;
 
         private int _pageSize = 5; //user can override this value 
@@ -28,7 +28,7 @@ namespace Core.Specifications
         {
             get => _search;
 
-            set => _search= value.ToLower();
+            set => _search = value.ToLower();
         }
 
 
