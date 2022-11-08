@@ -1,5 +1,4 @@
-
-<div class="container mt-5">
+<div class="container mt-2">
   <div *ngIf="(basket$ | async) === null">
     <p>There are no items in your basket</p>
   </div>
@@ -20,7 +19,10 @@
         <div class="row">
           <div class="col-6 offset-6">
             <app-order-totals></app-order-totals>
-            <a routerLink="/checkout" class="btn btn-outline-primary py-2 btn-block">
+            <a
+              routerLink="/checkout"
+              class="btn btn-outline-primary py-2 btn-block"
+            >
               Proceed to checkout
             </a>
           </div>

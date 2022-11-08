@@ -5,12 +5,15 @@ import { AccountService } from '../account/account.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  styleUrls: ['./checkout.component.scss'],
 })
 export class CheckoutComponent implements OnInit {
   checkoutForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private accountService: AccountService) { }
+  constructor(
+    private fb: FormBuilder,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit(): void {
     this.createCheckoutForm();
@@ -24,26 +27,28 @@ export class CheckoutComponent implements OnInit {
         lastName: [null, Validators.required],
         street: [null, Validators.required],
         city: [null, Validators.required],
-        state: [null, Validators.required],
+
         zipCode: [null, Validators.required],
       }),
       deliveryForm: this.fb.group({
-        deliveryMethod: [null, Validators.required]
+        deliveryMethod: [null, Validators.required],
       }),
       paymentForm: this.fb.group({
-        nameOnCard: [null, Validators.required]
-      })
-    })
+        nameOnCard: [null, Validators.required],
+      }),
+    });
   }
 
   getAddressFormValues() {
-    this.accountService.getUserAddress().subscribe(address => {
-      if (address) {
-        this.checkoutForm.get('addressForm').patchValue(address);
+    this.accountService.getUserAddress().subscribe(
+      (address) => {
+        if (address) {
+          this.checkoutForm.get('addressForm').patchValue(address);
+        }
+      },
+      (error) => {
+        console.log(error);
       }
-    }, error => {
-      console.log(error);
-    })
+    );
   }
-
 }

@@ -5,10 +5,7 @@
         <h1 class="h3 mb-3 font-weight-normal">Register</h1>
       </div>
 
-      <app-text-input
-        formControlName="name"
-        [label]="' Name'"
-      ></app-text-input>
+      <app-text-input formControlName="name" [label]="' Name'"></app-text-input>
       <app-text-input
         formControlName="email"
         [label]="'Email address'"
@@ -25,9 +22,47 @@
         </li>
       </ul>
 
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Register
-      </button>
+      <div class="d-grid gap-3">
+        <button class="btn btn-lg btn-primary" type="submit">Register</button>
+      </div>
     </form>
+
+    <div class="hover-text">
+      &#10071;Password tooltip.
+      <span class="tooltip-text" id="top"
+        >Password: 1 capital, 1 alpha numeric and 1 number ex: Pa$$w0rd</span
+      >
+    </div>
+    <style>
+      .tooltip-text {
+        visibility: hidden;
+        position: absolute;
+        z-index: 1;
+        width: 400px;
+        color: white;
+        font-size: 14px;
+        background-color: #192733;
+        border-radius: 10px;
+        padding: 10px 15px 10px 15px;
+      }
+
+      .hover-text:hover .tooltip-text {
+        visibility: visible;
+      }
+
+      #top {
+        top: -40px;
+        left: -50%;
+      }
+
+      .hover-text {
+        position: relative;
+        display: inline-block;
+        margin: 5px;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        cursor: pointer;
+      }
+    </style>
   </div>
 </div>

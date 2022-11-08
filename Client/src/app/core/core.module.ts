@@ -7,8 +7,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { ToastrModule } from 'ngx-toastr';
 
-
 import { SharedModule } from '../shared/shared.module';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { SectionHeaderComponent } from './section-header/section-header.component';
 
 @NgModule({
   declarations: [
@@ -16,10 +17,12 @@ import { SharedModule } from '../shared/shared.module';
     TestErrorComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    SectionHeaderComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    BreadcrumbModule,
 
     SharedModule,
     ToastrModule.forRoot({
@@ -27,6 +30,6 @@ import { SharedModule } from '../shared/shared.module';
       preventDuplicates: true,
     }),
   ],
-  exports: [NavBarComponent],
+  exports: [NavBarComponent, SectionHeaderComponent],
 })
 export class CoreModule {}

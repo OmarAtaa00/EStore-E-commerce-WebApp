@@ -1,18 +1,19 @@
 <ng-container p-2>
-  <div class="container mt-5">
+  <div class="container mt-3">
     <div class="row">
       <section class="col-3">
         <ng-container *ngIf="types && brands">
           <h5 class="text-warning ml-3 mt-3 mb-4">Sort</h5>
           <select
-            class="custom-select mb-4"
+            class="form-select form-select-sm"
+            aria-label=".form-select-sm example"
             (change)="onSortSelected($event.target.value)"
           >
             <option *ngFor="let sort of sortOptions" [value]="sort.value">
               {{ sort.name }}
             </option>
           </select>
-
+          <br />
           <h5 class="text-warning ml-3">Brands</h5>
           <ul class="list-group mb-3">
             <li
